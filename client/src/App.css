@@ -1,0 +1,243 @@
+/* Additional styles specific to the App component */
+:root {
+  --bg-primary: #202124;
+  --bg-secondary: #292a2d;
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa0a6;
+  --accent-blue: #8ab4f8;
+  --accent-purple: #c58af9;
+  --accent-orange: #f28b82;
+  --border-color: #3c4043;
+  --tooltip-bg: #3c4043;
+  --tooltip-text: #e8eaed;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.translation-container {
+  margin-top: 20px;
+}
+
+h1, h2 {
+  color: var(--text-primary);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.translation-group {
+  margin-bottom: 8px;
+}
+
+.translation-line {
+  margin-bottom: 0;
+  line-height: 1.3;
+  font-size: 1.1rem;
+  word-wrap: break-word;
+  border: none;
+  padding: 0;
+}
+
+.pinyin-line {
+  margin-top: 2px;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.2;
+  font-style: italic;
+  word-wrap: break-word;
+}
+
+.pinyin-text {
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.translation-text {
+  display: inline;
+}
+
+.chinese-char {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  color: var(--accent-blue);
+  font-weight: 500;
+  margin-right: 0;
+  font-size: 1.2rem;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  min-width: 120px;
+  width: max-content;
+  max-width: 250px;
+  border: 1px solid var(--border-color);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--tooltip-bg) transparent transparent transparent;
+}
+
+.tooltip-pinyin {
+  display: block;
+  font-style: italic;
+  margin-bottom: 3px;
+  color: var(--text-secondary);
+}
+
+.tooltip-english {
+  display: block;
+  font-weight: 500;
+}
+
+.chinese-char:hover + .tooltip,
+.tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.input-section, .output-section {
+  background-color: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.translation-result {
+  background-color: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  line-height: 1.3;
+}
+
+textarea {
+  width: 100%;
+  min-height: 150px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+button:hover {
+  background-color: #3c4043;
+  border-color: #5f6368;
+}
+
+.example-button {
+  background-color: #544daa;
+  border-color: #6c63d8;
+}
+
+.example-button:hover {
+  background-color: #6c63d8;
+  border-color: #8678ff;
+}
+
+.pinyin-toggle-button {
+  background-color: #b05d48;
+  border-color: #d66b51;
+}
+
+.pinyin-toggle-button:hover {
+  background-color: #d66b51;
+  border-color: #f07c5a;
+}
+
+.error {
+  background-color: rgba(217, 48, 37, 0.2);
+  color: #f28b82;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(217, 48, 37, 0.5);
+}
+
+.loading {
+  color: var(--text-secondary);
+  margin: 20px 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  
+  textarea {
+    min-height: 120px;
+  }
+  
+  .tooltip {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+} 
